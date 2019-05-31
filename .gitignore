@@ -7,3 +7,4 @@ example/.terraform/*
 example/.terraform
 *plan.out*
 example/.terraform.tfstate.backup.swp
+example/.terraform.tfstate.lock.info

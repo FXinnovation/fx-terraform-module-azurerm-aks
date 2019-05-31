@@ -57,6 +57,12 @@ variable "log_analytics_workspace_retentionDays" {
   description = "Amount of days the data in log analytics will be retained. Can go from 30 to 730. If sku is free, leave empty."
 }
 
+variable "rbac_enabled" {
+  type        = "string"
+  default     = "false"
+  description = "Define if RBAC feature is enabled or not."
+}
+
 variable "tags" {
   type        = "map"
   description = "Tags that will be applied to the resource group and cluster. The default contains the tags that fits with FX's policies."

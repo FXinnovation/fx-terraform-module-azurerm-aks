@@ -32,5 +32,6 @@ module "aks_cluster" {
   log_analytics_workspace_name          = "${var.log_analytics_workspace_name}"
   log_analytics_workspace_sku           = "${var.log_analytics_workspace_sku}"
   log_analytics_workspace_retentionDays = "${var.log_analytics_workspace_sku == "free" ? "" : var.log_analytics_workspace_retentionDays}"
+  rbac_enabled                          = "${var.rbac_enabled}"
   tags                                  = "${var.tags}"
 }

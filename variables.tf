@@ -77,6 +77,12 @@ variable "log_analytics_workspace_retentionDays" {
   description = "Retention days for log analytics workspace. If SKU is free, leave empty, else 30 to 730 days."
 }
 
+variable "rbac_enabled" {
+  type        = "string"
+  default     = "false"
+  description = "Define if RBAC feature is enabled or not."
+}
+
 variable "tags" {
   type = "map"
 

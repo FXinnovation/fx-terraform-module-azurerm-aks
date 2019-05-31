@@ -65,5 +65,9 @@ resource "azurerm_kubernetes_cluster" "this" {
     client_secret = "${var.service_principal_client_secret}"
   }
 
+  role_based_access_control {
+    enabled = "${var.rbac_enabled == "true" ? true : false}"
+  }
+
   tags = "${var.tags}"
 }

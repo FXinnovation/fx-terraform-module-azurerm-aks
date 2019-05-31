@@ -10,6 +10,7 @@ vm_os_disk_gb_size = 40
 log_analytics_workspace_name = "fxloganalytics"
 log_analytics_workspace_sku = "perGB2018"
 log_analytics_workspace_retentionDays = 60
+rbac_enabled = "true"
 tags = {
     FXOwner      = "Name"
     FXDepartment = "cloud"

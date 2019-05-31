@@ -15,22 +15,18 @@ module "service_principal" {
 }
 
 module "aks_cluster" {
-  source = "../"
-  resource_group_name = "${azurerm_resource_group.this_rg.name}"
-  location = "${azurerm_resource_group.this_rg.location}"
-  cluster_name = "aksname"
-  kubernetes_version = "1.13.5"
-  admin_username = "ubuntu"
-  ssh_public_key = ""
-  agent_count = 3
-  vm_size = "Standard_DS2_v2"
-  vm_os_disk_gb_size = 40
-  log_analytics_workspace_name = "fxloganalytics"
-  log_analytics_workspace_sku = "free"
-  log_analytics_workspace_retentionDays = 40
-  tags = {
-    FXOwner      = "Name2"
-    FXDepartment = "cloud2"
-    FXProject    = "FXCL"
-  }
+  source                                = "../"
+  resource_group_name                   = "${azurerm_resource_group.this_rg.name}"
+  location                              = "${azurerm_resource_group.this_rg.location}"
+  cluster_name                          = "${var.cluster_name}"
+  kubernetes_version                    = "${var.kubernetes_version}"
+  admin_username                        = "${var.admin_username}"
+  ssh_public_key                        = "${var.ssh_public_key}"
+  agent_count                           = "${var.agent_count}"
+  vm_size                               = "${var.vm_size}"
+  vm_os_disk_gb_size                    = "${var.vm_os_disk_gb_size}"
+  log_analytics_workspace_name          = "${var.log_analytics_workspace_name}"
+  log_analytics_workspace_sku           = "${var.log_analytics_workspace_sku}"
+  log_analytics_workspace_retentionDays = "${var.log_analytics_workspace_retentionDays}"
+  tags                                  = "${var.tags}"
 }

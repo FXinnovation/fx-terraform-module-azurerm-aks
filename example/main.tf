@@ -25,7 +25,7 @@ module "aks_cluster" {
   service_principal_client_id           = "${module.service_principal.client_id}"
   service_principal_client_secret       = "${module.service_principal.client_secret}"
   admin_username                        = "${var.admin_username}"
-  ssh_public_key                        = "${var.ssh_public_key}"
+  ssh_public_key                        = "${local.ssh_public_key}"
   agent_count                           = "${var.agent_count}"
   vm_size                               = "${var.vm_size}"
   vm_os_disk_gb_size                    = "${var.vm_os_disk_gb_size}"

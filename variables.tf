@@ -16,6 +16,12 @@ variable "location" {
   description = "Location where the resource group and cluster will be deployed."
 }
 
+variable "kubernetes_version" {
+  type        = "string"
+  default     = "1.13.5"
+  description = "Version of kubernetes used in the cluster."
+}
+
 variable "admin_username" {
   type        = "string"
   default     = "aksadmin"
@@ -55,13 +61,13 @@ variable "tags" {
 }
 
 variable "log_analytics_workspace_name" {
-    type = "string"
-    default = "fxloganalytics"
-    description = "Name of the log analytics workspace that will host the cluster telemetric data."
+  type        = "string"
+  default     = "fxloganalytics"
+  description = "Name of the log analytics workspace that will host the cluster telemetric data."
 }
 
 variable "log_analytics_workspace_sku" {
-    type = "string"
-    default = "free"
-    description = "SKU of the log analytics workspace that will host the cluster telemetric data."
+  type        = "string"
+  default     = "free"
+  description = "SKU of the log analytics workspace that will host the cluster telemetric data."
 }

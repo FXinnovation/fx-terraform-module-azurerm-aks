@@ -38,6 +38,7 @@ resource "azurerm_kubernetes_cluster" "this" {
   name                = "${var.cluster_name}"
   location            = "${azurerm_resource_group.this_rg.location}"
   resource_group_name = "${azurerm_resource_group.this_rg.name}"
+  kubernetes_version  = "${var.kubernetes_version}"
   dns_prefix          = "${var.cluster_name}"
 
   linux_profile {

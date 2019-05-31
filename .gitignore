@@ -1,0 +1,4 @@
+SPCreds_formation1_fx-sp-terraform-aks.json
+.terraform/*
+terraform.tfstate
+terraform.tfstate.backup

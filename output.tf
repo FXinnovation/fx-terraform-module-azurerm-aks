@@ -1,5 +1,5 @@
 output "host" {
-  value = "${azurerm_kubernetes_cluster.this_noRBAC.kube_config.0.host}"
+  value = "${azurerm_kubernetes_cluster.this.kube_config.0.host}"
 }
 
 output "kube_config" {

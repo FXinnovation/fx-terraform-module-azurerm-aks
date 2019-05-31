@@ -31,6 +31,6 @@ module "aks_cluster" {
   vm_os_disk_gb_size                    = "${var.vm_os_disk_gb_size}"
   log_analytics_workspace_name          = "${var.log_analytics_workspace_name}"
   log_analytics_workspace_sku           = "${var.log_analytics_workspace_sku}"
-  log_analytics_workspace_retentionDays = "${var.log_analytics_workspace_retentionDays}"
+  log_analytics_workspace_retentionDays = "${var.log_analytics_workspace_sku == "free" ? "" : var.log_analytics_workspace_retentionDays}"
   tags                                  = "${var.tags}"
 }

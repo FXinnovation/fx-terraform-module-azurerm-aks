@@ -69,9 +69,7 @@ resource "azurerm_kubernetes_cluster" "this" {
     enabled = "${var.rbac_enabled == "true" ? true : false}"
 
     azure_active_directory {
-
       client_app_id = "${var.service_principal_client_id}"
-
       server_app_id     = "${var.service_principal_client_id}"
       server_app_secret = "${var.service_principal_client_secret}"
     }

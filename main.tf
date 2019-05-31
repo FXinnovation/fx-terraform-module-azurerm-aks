@@ -30,8 +30,7 @@ resource "azurerm_log_analytics_solution" "this_ws_solution" {
   }
 }
 
-resource "azurerm_kubernetes_cluster" "this_withRBAC" {
-  count = "${var.rbac_enabled == "true" ? 1 : 0}"
+resource "azurerm_kubernetes_cluster" "this" {
   name                = "${var.cluster_name}"
   location            = "${azurerm_resource_group.this_rg.location}"
   resource_group_name = "${azurerm_resource_group.this_rg.name}"
@@ -67,53 +66,7 @@ resource "azurerm_kubernetes_cluster" "this_withRBAC" {
   }
 
   role_based_access_control {
-    enabled = "true"
-
-    azure_active_directory {
-      client_app_id = "${var.service_principal_client_id}"
-      server_app_id     = "${var.service_principal_client_id}"
-      server_app_secret = "${var.service_principal_client_secret}"
-    }
-  }
-
-  tags = "${var.tags}"
-}
-
-
-resource "azurerm_kubernetes_cluster" "this_noRBAC" {
-  count = "${var.rbac_enabled == "false" ? 1 : 0}"
-  name                = "${var.cluster_name}"
-  location            = "${azurerm_resource_group.this_rg.location}"
-  resource_group_name = "${azurerm_resource_group.this_rg.name}"
-  kubernetes_version  = "${var.kubernetes_version}"
-  dns_prefix          = "${var.cluster_name}"
-
-  linux_profile {
-    admin_username = "${var.admin_username}"
-
-    ssh_key {
-      key_data = "${local.ssh_public_key}"
-    }
-  }
-
-  agent_pool_profile {
-    name            = "default"
-    count           = "${var.agent_count}"
-    vm_size         = "${var.vm_size}"
-    os_type         = "Linux"
-    os_disk_size_gb = "${var.vm_os_disk_gb_size}"
-  }
-
-  addon_profile {
-    oms_agent {
-      enabled                    = true
-      log_analytics_workspace_id = "${azurerm_log_analytics_workspace.this_ws.id}"
-    }
-  }
-
-  service_principal {
-    client_id     = "${var.service_principal_client_id}"
-    client_secret = "${var.service_principal_client_secret}"
+    enabled = "${var.rbac_enabled}"
   }
 
   tags = "${var.tags}"

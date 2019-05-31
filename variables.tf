@@ -71,3 +71,8 @@ variable "log_analytics_workspace_sku" {
   default     = "free"
   description = "SKU of the log analytics workspace that will host the cluster telemetric data."
 }
+
+variable "log_analytics_workspace_retentionDays" {
+    default = 30
+    description = "Amount of days the data in log analytics will be retained. Can go from 30 to 730."
+}

@@ -16,14 +16,14 @@ resource "azurerm_resource_group" "this_rg" {
 
 resource "azurerm_log_analytics_workspace" "this_ws" {
   name                = "${var.log_analytics_workspace_name}"
-  location            = "${var.log_analytics_workspace_location}"
+  location            = "${var.location}"
   resource_group_name = "${azurerm_resource_group.this_rg.name}"
   sku                 = "${var.log_analytics_workspace_sku}"
 }
 
 resource "azurerm_log_analytics_solution" "this_ws_solution" {
   solution_name         = "ContainerInsights"
-  location              = "${azurerm_log_analytics_workspace.this_ws.location}"
+  location              = "${var.location}"
   resource_group_name   = "${azurerm_resource_group.this_rg.name}"
   workspace_resource_id = "${azurerm_log_analytics_workspace.this_ws.id}"
   workspace_name        = "${azurerm_log_analytics_workspace.this_ws.name}"

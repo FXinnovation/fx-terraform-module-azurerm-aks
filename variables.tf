@@ -53,3 +53,15 @@ variable "tags" {
 
   description = "Tags that will be applied to the resource group and cluster. The default contains the tags that fits with FX's policies."
 }
+
+variable "log_analytics_workspace_name" {
+    type = "string"
+    default = "fxloganalytics"
+    description = "Name of the log analytics workspace that will host the cluster telemetric data."
+}
+
+variable "log_analytics_workspace_sku" {
+    type = "string"
+    default = "free"
+    description = "SKU of the log analytics workspace that will host the cluster telemetric data."
+}

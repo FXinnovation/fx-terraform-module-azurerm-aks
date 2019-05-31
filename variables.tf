@@ -68,6 +68,7 @@ variable "log_analytics_workspace_retentionDays" {
 }
 
 variable "tags" {
+  type = "map"
   default = {
     FXOwner      = "Name"
     FXDepartment = "cloud"

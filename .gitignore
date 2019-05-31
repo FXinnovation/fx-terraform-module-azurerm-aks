@@ -3,3 +3,6 @@ SPCreds_formation1_fx-sp-terraform-aks.json
 terraform.tfstate
 terraform.tfstate.backup
 SPCreds_formation1_fx-terraform-aks-deployment.json
+example/.terraform/*
+example/.terraform
+*plan.out*

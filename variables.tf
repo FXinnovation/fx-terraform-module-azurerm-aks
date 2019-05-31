@@ -23,12 +23,12 @@ variable "kubernetes_version" {
 }
 
 variable "service_principal_client_id" {
-  type = "string"
+  type        = "string"
   description = "Client ID of the service principal created for the cluster."
 }
 
 variable "service_principal_client_secret" {
-  type = "string"
+  type        = "string"
   description = "Secret of the service principal."
 }
 
@@ -73,12 +73,13 @@ variable "log_analytics_workspace_sku" {
 }
 
 variable "log_analytics_workspace_retentionDays" {
-  default     = 30
-  description = "Amount of days the data in log analytics will be retained. Can go from 30 to 730."
+  default     = "7"
+  description = "Retention days for log analytics workspace. 7 days if SKU is free, else 30 to 730 days."
 }
 
 variable "tags" {
   type = "map"
+
   default = {
     FXOwner      = "Name"
     FXDepartment = "cloud"

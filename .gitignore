@@ -6,3 +6,4 @@ SPCreds_formation1_fx-terraform-aks-deployment.json
 example/.terraform/*
 example/.terraform
 *plan.out*
+example/.terraform.tfstate.backup.swp

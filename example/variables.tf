@@ -49,14 +49,15 @@ variable "log_analytics_workspace_name" {
 
 variable "log_analytics_workspace_sku" {
   type        = "string"
+  default     = "free"
   description = "SKU of the log analytics workspace that will host the cluster telemetric data."
 }
 
 variable "log_analytics_workspace_retentionDays" {
-  description = "Amount of days the data in log analytics will be retained. Can go from 30 to 730."
+  description = "Amount of days the data in log analytics will be retained. Can go from 30 to 730. If sku is free, maximum is 7 days."
 }
 
 variable "tags" {
-    type = "map"
-    description = "Tags that will be applied to the resource group and cluster. The default contains the tags that fits with FX's policies."
+  type        = "map"
+  description = "Tags that will be applied to the resource group and cluster. The default contains the tags that fits with FX's policies."
 }

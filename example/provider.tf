@@ -2,6 +2,10 @@ provider "azurerm" {
   version = "~> 1.17.0"
 }
 
+provider "random" {
+  version = "~> 2.0"
+}
+
 #provider "kubernetes" {
 #  version                = "~> 1.3"
 #  host                   = "${azurerm_kubernetes_cluster.this.kube_config.0.host}"

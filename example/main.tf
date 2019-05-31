@@ -10,16 +10,20 @@ resource "azurerm_resource_group" "this_rg" {
 }
 
 module "service_principal" {
-  source  = "../../terraform-module-azure-service_principal"
+  source = "../../terraform-module-azure-service_principal"
+
   sp_name = "${var.cluster_name}"
 }
 
 module "aks_cluster" {
-  source                                = "../"
+  source = "../"
+
   resource_group_name                   = "${azurerm_resource_group.this_rg.name}"
   location                              = "${azurerm_resource_group.this_rg.location}"
   cluster_name                          = "${var.cluster_name}"
   kubernetes_version                    = "${var.kubernetes_version}"
+  service_principal_client_id           = "${module.service_principal.client_id}"
+  service_principal_client_secret       = "${module.service_principal.client_secret}"
   admin_username                        = "${var.admin_username}"
   ssh_public_key                        = "${var.ssh_public_key}"
   agent_count                           = "${var.agent_count}"

@@ -76,7 +76,6 @@ resource "azurerm_kubernetes_cluster" "this" {
       server_app_secret = "${var.service_principal_client_secret}"
     }
   }
-  }
 
   tags = "${var.tags}"
 }

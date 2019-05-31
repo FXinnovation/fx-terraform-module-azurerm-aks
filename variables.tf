@@ -4,16 +4,16 @@ variable "resource_group_name" {
   description = "Name of the resource group that will be created and host with the cluster."
 }
 
-variable "cluster_name" {
-  type        = "string"
-  default     = "clustername"
-  description = "Name of the AKS cluster to deploy. This will be used also as the DNS prefix."
-}
-
 variable "location" {
   type        = "string"
   default     = "canadacentral"
   description = "Location where the resource group and cluster will be deployed."
+}
+
+variable "cluster_name" {
+  type        = "string"
+  default     = "clustername"
+  description = "Name of the AKS cluster to deploy. This will be used also as the DNS prefix."
 }
 
 variable "kubernetes_version" {
@@ -50,16 +50,6 @@ variable "vm_os_disk_gb_size" {
   description = "Size of the OS disk for each agent. "
 }
 
-variable "tags" {
-  default = {
-    FXOwner      = "Name"
-    FXDepartment = "cloud"
-    FXProject    = "FXCL"
-  }
-
-  description = "Tags that will be applied to the resource group and cluster. The default contains the tags that fits with FX's policies."
-}
-
 variable "log_analytics_workspace_name" {
   type        = "string"
   default     = "fxloganalytics"
@@ -76,3 +66,14 @@ variable "log_analytics_workspace_retentionDays" {
     default = 30
     description = "Amount of days the data in log analytics will be retained. Can go from 30 to 730."
 }
+
+variable "tags" {
+  default = {
+    FXOwner      = "Name"
+    FXDepartment = "cloud"
+    FXProject    = "FXCL"
+  }
+
+  description = "Tags that will be applied to the resource group and cluster. The default contains the tags that fits with FX's policies."
+}
+

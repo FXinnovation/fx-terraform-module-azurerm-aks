@@ -73,8 +73,8 @@ variable "log_analytics_workspace_sku" {
 }
 
 variable "log_analytics_workspace_retentionDays" {
-  default     = "7"
-  description = "Retention days for log analytics workspace. 7 days if SKU is free, else 30 to 730 days."
+  default     = "30"
+  description = "Retention days for log analytics workspace. If SKU is free, leave empty, else 30 to 730 days."
 }
 
 variable "tags" {

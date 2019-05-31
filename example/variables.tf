@@ -54,7 +54,7 @@ variable "log_analytics_workspace_sku" {
 }
 
 variable "log_analytics_workspace_retentionDays" {
-  description = "Amount of days the data in log analytics will be retained. Can go from 30 to 730. If sku is free, maximum is 7 days."
+  description = "Amount of days the data in log analytics will be retained. Can go from 30 to 730. If sku is free, leave empty."
 }
 
 variable "tags" {

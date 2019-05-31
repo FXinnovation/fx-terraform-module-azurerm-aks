@@ -50,7 +50,7 @@ resource "azurerm_kubernetes_cluster" "this" {
   }
 
   agent_pool_profile {
-    name            = "default_agentpool"
+    name            = "default"
     count           = "${var.agent_count}"
     vm_size         = "${var.vm_size}"
     os_type         = "Linux"

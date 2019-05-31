@@ -3,11 +3,6 @@ locals {
   ssh_public_key         = "${var.ssh_public_key != "" ? var.ssh_public_key : local.default_ssh_public_key }"
 }
 
-module "service_principal" {
-  source  = "../terraform-module-azure-service_principal"
-  sp_name = "${var.cluster_name}"
-}
-
 resource "azurerm_resource_group" "this_rg" {
   name     = "${var.resource_group_name}"
   location = "${var.location}"
@@ -66,8 +61,8 @@ resource "azurerm_kubernetes_cluster" "this" {
   }
 
   service_principal {
-    client_id     = "${module.service_principal.client_id}"
-    client_secret = "${module.service_principal.client_secret}"
+    client_id     = "${var.service_principal_client_id}"
+    client_secret = "${var.service_principal_client_secret}"
   }
 
   tags = "${var.tags}"

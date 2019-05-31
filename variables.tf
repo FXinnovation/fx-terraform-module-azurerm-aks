@@ -22,6 +22,16 @@ variable "kubernetes_version" {
   description = "Version of kubernetes used in the cluster."
 }
 
+variable "service_principal_client_id" {
+  type = "string"
+  description = "Client ID of the service principal created for the cluster."
+}
+
+variable "service_principal_client_secret" {
+  type = "string"
+  description = "Secret of the service principal."
+}
+
 variable "admin_username" {
   type        = "string"
   default     = "aksadmin"

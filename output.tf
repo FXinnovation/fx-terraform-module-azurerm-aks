@@ -1,7 +1,3 @@
-output "service_principal_id" {
-  value = "${module.service_principal.client_id}"
-}
-
 output "host" {
   value = "${azurerm_kubernetes_cluster.this.kube_config.0.host}"
 }

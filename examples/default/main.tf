@@ -1,8 +1,3 @@
-locals {
-  default_ssh_public_key = "${file("~/.ssh/id_rsa.pub")}"
-  ssh_public_key         = "${var.ssh_public_key != "" ? var.ssh_public_key : local.default_ssh_public_key}"
-}
-
 resource "azurerm_resource_group" "this_rg" {
   name     = "${var.resource_group_name}"
   location = "${var.location}"
@@ -16,7 +11,7 @@ module "service_principal" {
 }
 
 module "aks_cluster" {
-  source = "../"
+  source = "../../"
 
   resource_group_name                   = "${azurerm_resource_group.this_rg.name}"
   location                              = "${azurerm_resource_group.this_rg.location}"

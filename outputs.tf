@@ -7,5 +7,5 @@ output "kube_config" {
 }
 
 output "log_analytics_workspace_id" {
-  value = azurerm_log_analytics_workspace.this_ws.id
+  value = azurerm_log_analytics_workspace.this.id
 }

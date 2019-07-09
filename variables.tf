@@ -4,6 +4,11 @@ variable "resource_group_name" {
   description = "Name of the resource group that will be created and host with the cluster."
 }
 
+variable "resource_group_name" {
+  default     = {}
+  description = "Tags you want to apply to the resource group."
+}
+
 variable "location" {
   type        = string
   default     = "canadacentral"

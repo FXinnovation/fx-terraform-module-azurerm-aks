@@ -1,6 +1,6 @@
 locals {
   default_ssh_public_key = "${file("~/.ssh/id_rsa.pub")}"
-  ssh_public_key         = "${var.ssh_public_key != "" ? var.ssh_public_key : local.default_ssh_public_key }"
+  ssh_public_key         = "${var.ssh_public_key != "" ? var.ssh_public_key : local.default_ssh_public_key}"
 }
 
 resource "azurerm_resource_group" "this_rg" {

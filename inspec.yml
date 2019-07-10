@@ -1,0 +1,8 @@
+name: azurerm-aks
+title: Azure Kubernetes Service
+maintainer: FXinnovation, Inc.
+copyright: FXinnovaion, Inc.
+copyright_email: cloudsquad@fxinnovation.com
+license: MIT
+summary: Inspec for azurerm aks terraform module
+version: 0.1.0

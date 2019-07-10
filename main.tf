@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "this" {
-  count    = var.enable == "false" ? 0 : 1
+  count    = var.enabled == "false" ? 0 : 1
   name     = var.resource_group_name
   location = var.location
   tags = merge(
@@ -11,7 +11,7 @@ resource "azurerm_resource_group" "this" {
 }
 
 resource "azurerm_log_analytics_workspace" "this" {
-  count               = var.enable == "false" ? 0 : 1
+  count               = var.enabled == "false" ? 0 : 1
   name                = var.log_analytics_workspace_name
   location            = var.location
   resource_group_name = azurerm_resource_group.this[0].name
@@ -20,7 +20,7 @@ resource "azurerm_log_analytics_workspace" "this" {
 }
 
 resource "azurerm_log_analytics_solution" "this" {
-  count                 = var.enable == "false" ? 0 : 1
+  count                 = var.enabled == "false" ? 0 : 1
   solution_name         = "ContainerInsights"
   location              = var.location
   resource_group_name   = azurerm_resource_group.this[0].name
@@ -34,7 +34,7 @@ resource "azurerm_log_analytics_solution" "this" {
 }
 
 resource "azurerm_kubernetes_cluster" "this" {
-  count               = var.enable == "false" ? 0 : 1
+  count               = var.enabled == "false" ? 0 : 1
   name                = var.cluster_name
   location            = azurerm_resource_group.this[0].location
   resource_group_name = azurerm_resource_group.this[0].name

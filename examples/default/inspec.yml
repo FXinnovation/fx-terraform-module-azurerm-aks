@@ -1,0 +1,13 @@
+name: azurerm-aks-default
+title: AzureRM AKS for default example
+maintainer: FXinnovation, Inc.
+copyright: FXinnovaion, Inc.
+copyright_email: cloudsquad@fxinnovation.com
+license: MIT
+summary: Inspec for azurerm-aks default example
+version: 0.1.0
+depends:
+  - name: azurerm-aks
+    path: ../../
+  - name: azuread-service-principal
+    path: 'https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azuread-service-principal/archive/SL-455.tar.gz'

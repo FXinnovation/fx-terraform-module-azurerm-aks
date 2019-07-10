@@ -14,7 +14,7 @@ resource "azurerm_log_analytics_workspace" "this" {
   count               = var.enable == "false" ? 0 : 1
   name                = var.log_analytics_workspace_name
   location            = var.location
-  resource_group_name = azurerm_resource_group.this.name
+  resource_group_name = azurerm_resource_group.this[0].name
   sku                 = var.log_analytics_workspace_sku
   retention_in_days   = var.log_analytics_workspace_sku == "free" ? "" : var.log_analytics_workspace_retentionDays
 }
@@ -23,9 +23,9 @@ resource "azurerm_log_analytics_solution" "this" {
   count                 = var.enable == "false" ? 0 : 1
   solution_name         = "ContainerInsights"
   location              = var.location
-  resource_group_name   = azurerm_resource_group.this.name
-  workspace_resource_id = azurerm_log_analytics_workspace.this.id
-  workspace_name        = azurerm_log_analytics_workspace.this.name
+  resource_group_name   = azurerm_resource_group.this[0].name
+  workspace_resource_id = azurerm_log_analytics_workspace.this[0].id
+  workspace_name        = azurerm_log_analytics_workspace.this[0].name
 
   plan {
     publisher = "Microsoft"
@@ -36,8 +36,8 @@ resource "azurerm_log_analytics_solution" "this" {
 resource "azurerm_kubernetes_cluster" "this" {
   count               = var.enable == "false" ? 0 : 1
   name                = var.aks_name
-  location            = azurerm_resource_group.this.location
-  resource_group_name = azurerm_resource_group.this.name
+  location            = azurerm_resource_group.this[0].location
+  resource_group_name = azurerm_resource_group.this[0].name
   kubernetes_version  = var.aks_kubernetes_version
   dns_prefix          = var.aks_dns_prefix
 
@@ -52,7 +52,7 @@ resource "azurerm_kubernetes_cluster" "this" {
   addon_profile {
     oms_agent {
       enabled                    = true
-      log_analytics_workspace_id = azurerm_log_analytics_workspace.this.id
+      log_analytics_workspace_id = azurerm_log_analytics_workspace.this[0].id
     }
   }
 

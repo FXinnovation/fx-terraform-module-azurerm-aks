@@ -16,7 +16,7 @@ resource "azurerm_log_analytics_workspace" "this" {
   location            = var.location
   resource_group_name = azurerm_resource_group.this[0].name
   sku                 = var.log_analytics_workspace_sku
-  retention_in_days   = var.log_analytics_workspace_sku == "free" ? "" : var.log_analytics_workspace_retentionDays
+  retention_in_days   = var.log_analytics_workspace_sku == "free" ? "30" : var.log_analytics_workspace_retentionDays
 }
 
 resource "azurerm_log_analytics_solution" "this" {

@@ -1,23 +1,4 @@
 ###
-# Variables
-###
-variable "client_id" {
-  type = "string"
-}
-
-variable "client_secret" {
-  type = "string"
-}
-
-variable "subscription_id" {
-  type = "string"
-}
-
-variable "tenant_id" {
-  type = "string"
-}
-
-###
 # Random Name
 ###
 resource "random_string" "default" {
@@ -35,23 +16,28 @@ module "aks_service_principal" {
   application_name = "${random_string.default.result}-aks"
 }
 
+###
+# aks_cluster
+###
 # module "aks_cluster" {
 #   source = "../../"
 #
-#   resource_group_name                   = "${azurerm_resource_group.this_rg.name}"
+#   resource_group_name                   = "${random_string.default.result}-aks"
 #   location                              = "${azurerm_resource_group.this_rg.location}"
-#   cluster_name                          = "${var.cluster_name}"
+#   cluster_name                          = "${random_string.default.result}-aks"
 #   kubernetes_version                    = "${var.kubernetes_version}"
 #   service_principal_client_id           = "${module.service_principal.client_id}"
 #   service_principal_client_secret       = "${module.service_principal.client_secret}"
 #   admin_username                        = "${var.admin_username}"
-#   ssh_public_key                        = "${local.ssh_public_key}"
-#   agent_count                           = "${var.agent_count}"
+#   agent_count                           = "1"
 #   vm_size                               = "${var.vm_size}"
-#   vm_os_disk_gb_size                    = "${var.vm_os_disk_gb_size}"
-#   log_analytics_workspace_name          = "${var.log_analytics_workspace_name}"
+#   vm_os_disk_gb_size                    = "100"
+#   log_analytics_workspace_name          = "${random_string.default.result}-aks"
 #   log_analytics_workspace_sku           = "${var.log_analytics_workspace_sku}"
-#   log_analytics_workspace_retentionDays = "${var.log_analytics_workspace_sku == "free" ? "" : var.log_analytics_workspace_retentionDays}"
-#   rbac_enabled                          = "${var.rbac_enabled}"
-#   tags                                  = "${var.tags}"
+#   log_analytics_workspace_retentionDays = "free"
+#   rbac_enabled                          = "true"
+#   tags                                  = {
+#      "inspec" = "true",
+#      "test"   = "true"
+#    }
 # }

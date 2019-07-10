@@ -1,3 +1,9 @@
+variable "enable" {
+  type        = string
+  default     = "true"
+  description = "Wheter to enable or not this module"
+}
+
 variable "resource_group_name" {
   type        = string
   default     = "aks"
@@ -35,17 +41,6 @@ variable "service_principal_client_id" {
 variable "service_principal_client_secret" {
   type        = string
   description = "Secret of the service principal."
-}
-
-variable "admin_username" {
-  type        = string
-  default     = "aksadmin"
-  description = "Username that will be used to access the cluster."
-}
-
-variable "ssh_public_key" {
-  type        = string
-  description = "Public key for aksadmin's SSH access."
 }
 
 variable "agent_count" {

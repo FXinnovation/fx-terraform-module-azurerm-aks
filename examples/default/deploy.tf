@@ -25,17 +25,17 @@ module "aks_cluster" {
   resource_group_name                   = "${random_string.default.result}-aks"
   location                              = "canadacentral"
   cluster_name                          = "${random_string.default.result}-aks"
-  kubernetes_version                    = "1.13.5"
   service_principal_client_id           = "${module.aks_service_principal.client_id}"
   service_principal_client_secret       = "${module.aks_service_principal.client_secret}"
-  agent_count                           = "1"
-  vm_size                               = "Standard_DS2_v2"
-  vm_os_disk_gb_size                    = "30"
+  cluster_agent_pool_name               = "${random_string.default.result}-aks"
+  cluster_agent_pool_count              = "1"
+  cluster_agent_pool_vm_size            = "Standard_DS2_v2"
+  cluster_agent_pool_vm_os_disk_gb_size = "30"
   log_analytics_workspace_name          = "${random_string.default.result}-aks"
   log_analytics_workspace_sku           = "free"
-  log_analytics_workspace_retentionDays = "free"
-  rbac_enabled                          = "true"
-  tags = {
+  log_analytics_workspace_retentionDays = "30"
+  cluster_rbac_enabled                  = "true"
+  cluster_tags = {
     "inspec" = "true",
     "test"   = "true"
   }

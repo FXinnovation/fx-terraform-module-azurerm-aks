@@ -44,7 +44,7 @@ variable "cluster_kubernetes_version" {
 
 variable "cluster_dns_prefix" {
   type        = string
-  default     = "kubernetes.local"
+  default     = "kubernetes"
   description = "DNS prefix for the inside the kubernetes cluster."
 }
 

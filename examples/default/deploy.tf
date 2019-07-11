@@ -11,7 +11,7 @@ resource "random_string" "default" {
 # Service Principal
 ###
 module "aks_service_principal" {
-  source = "git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/terraform-module-azuread-service-principal.git?ref=SL-455"
+  source = "git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/terraform-module-azuread-service-principal.git?ref=0.1.0"
 
   application_name = "${random_string.default.result}-aks"
 }

@@ -10,13 +10,21 @@ resource "azurerm_resource_group" "this" {
   )
 }
 
-resource "azurerm_log_analytics_workspace" "this" {
-  count               = var.enabled == "false" ? 0 : 1
+resource "azurerm_log_analytics_workspace" "this_free" {
+  count               = var.enabled == "false" && var.log_analytics_workspace_sku != "free" ? 0 : 1
   name                = var.log_analytics_workspace_name
   location            = var.location
   resource_group_name = azurerm_resource_group.this[0].name
   sku                 = var.log_analytics_workspace_sku
-  retention_in_days   = var.log_analytics_workspace_sku == "free" ? "30" : var.log_analytics_workspace_retentionDays
+}
+
+resource "azurerm_log_analytics_workspace" "this_nonfree" {
+  count               = var.enabled == "false" && var.log_analytics_workspace_sku == "free" ? 0 : 1
+  name                = var.log_analytics_workspace_name
+  location            = var.location
+  resource_group_name = azurerm_resource_group.this[0].name
+  sku                 = var.log_analytics_workspace_sku
+  retention_in_days   = var.log_analytics_workspace_retentionDays
 }
 
 resource "azurerm_log_analytics_solution" "this" {
@@ -24,8 +32,8 @@ resource "azurerm_log_analytics_solution" "this" {
   solution_name         = "ContainerInsights"
   location              = var.location
   resource_group_name   = azurerm_resource_group.this[0].name
-  workspace_resource_id = azurerm_log_analytics_workspace.this[0].id
-  workspace_name        = azurerm_log_analytics_workspace.this[0].name
+  workspace_resource_id = var.log_analytics_workspace_sku == "free" ? azurerm_log_analytics_workspace.this_free[0].id : azurerm_log_analytics_workspace.this_nonfree[0].id
+  workspace_name        = var.log_analytics_workspace_sku == "free" ? azurerm_log_analytics_workspace.this_free[0].name : azurerm_log_analytics_workspace.this_nonfree[0].name
 
   plan {
     publisher = "Microsoft"
@@ -52,7 +60,7 @@ resource "azurerm_kubernetes_cluster" "this" {
   addon_profile {
     oms_agent {
       enabled                    = true
-      log_analytics_workspace_id = azurerm_log_analytics_workspace.this[0].id
+      log_analytics_workspace_id = var.log_analytics_workspace_sku == "free" ? azurerm_log_analytics_workspace.this_free[0].id : azurerm_log_analytics_workspace.this_nonfree[0].id
     }
   }
 

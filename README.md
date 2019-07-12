@@ -32,6 +32,5 @@ Terraform module that can be used to deploy an Azure Kubernetes Service.
 |------|-------------|
 | host |  |
 | kube\_config |  |
-| log\_analytics\_workspace\_id |  |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

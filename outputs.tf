@@ -7,5 +7,5 @@ output "kube_config" {
 }
 
 output "log_analytics_workspace_id" {
-  value = azurerm_log_analytics_workspace.this[0].id
+  value = var.log_analytics_workspace_sku == "free" ? azurerm_log_analytics_workspace.this_free[0].id : azurerm_log_analytics_workspace.this_nonfree[0].id
 }

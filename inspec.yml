@@ -6,3 +6,37 @@ copyright_email: cloudsquad@fxinnovation.com
 license: MIT
 summary: Inspec for azurerm aks terraform module
 version: 0.1.0
+depends:
+  - name: inspec-azure
+    url: https://github.com/inspec/inspec-azure/archive/1.3.0.tar.gz
+  - name: azurerm-resource-group
+    url:
+  - name: azurerm-log-analytics-workspace
+    url:
+supports:
+  - platform: azure
+attributes:
+  # Resource Group Attributes
+  - name: name_prefix
+    value: CHANGE_ME
+    profile: azurerm-resource-group
+  - name: location
+    value: CHANGE_ME
+    profile: azurerm-resource-group
+  - name: enabled
+    value: true
+    profile: azurerm-resource-group
+  # Log Analytics Workspace Attributes
+  - name: name
+    value: CHANGE_ME
+    profile: azurerm-log-analytics-workspace
+  - name: location
+    value: CHANGE_ME
+    profile: azurerm-log-analytics-workspace
+  - name: resource_group_name
+    value: CHANGE_ME
+    profile: azurerm-log-analytics-workspace
+  - name: enabled
+    value: true
+    profile: azurerm-log-analytics-workspace
+  # AKS Attributes

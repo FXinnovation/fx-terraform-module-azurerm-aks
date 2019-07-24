@@ -1,6 +1,3 @@
-###
-# global
-###
 variable "enabled" {
   type        = string
   default     = "true"
@@ -13,9 +10,6 @@ variable "location" {
   description = "Location where the resource group and cluster will be deployed."
 }
 
-###
-# resource group
-###
 variable "resource_group_name" {
   type        = string
   default     = "aks"
@@ -27,85 +21,43 @@ variable "resource_group_tags" {
   description = "Tags you want to apply to the resource group."
 }
 
-###
-# container cluster
-###
-variable "cluster_name" {
+variable "name" {
   type        = string
   default     = "clustername"
-  description = "Name of the AKS cluster to deploy. This will be used also as the DNS prefix."
+  description = "Name of the AKS cluster to deploy. This will be used also as the DNS prefix. Will also be used for the service principal."
 }
 
-variable "cluster_kubernetes_version" {
+variable "kubernetes_version" {
   type        = string
   default     = "1.13.5"
   description = "Version of kubernetes used in the cluster."
 }
 
-variable "cluster_dns_prefix" {
+variable "dns_prefix" {
   type        = string
   default     = "kubernetes"
   description = "DNS prefix for the inside the kubernetes cluster."
 }
 
-variable "cluster_service_principal_client_id" {
-  type        = string
-  description = "Client ID of the service principal created for the cluster."
+variable "agent_pool_profiles" {
+  type = list
+  description = "List of maps representing an agent pool profile."
 }
 
-variable "cluster_service_principal_client_secret" {
-  type        = string
-  description = "Secret of the service principal."
-}
-
-variable "cluster_agent_pool_name" {
-  default     = "agent-pool"
-  description = "Name of the agent pool inside your cluster."
-}
-
-variable "cluster_agent_pool_count" {
-  default     = 2
-  description = "Amount of VMs that will be deployed to create the cluster."
-}
-
-variable "cluster_agent_pool_vm_size" {
-  type        = string
-  default     = "Standard_DS2_v2"
-  description = "Sizing of each of the agents that makes the cluster."
-}
-
-variable "cluster_agent_pool_os_type" {
-  type        = string
-  default     = "linux"
-  description = "OS type for the agents in the cluster pool."
-}
-
-variable "cluster_agent_pool_vm_os_disk_gb_size" {
-  default     = 30
-  description = "Size of the OS disk for each agent. "
-}
-
-variable "cluster_rbac_enabled" {
-  type        = string
-  default     = "false"
+variable "rbac_enabled" {
+  type        = bool
+  default     = false
   description = "Define if RBAC feature is enabled or not."
 }
 
-variable "cluster_tags" {
+variable "tags" {
   type = map(string)
 
-  default = {
-    FXOwner      = "Name"
-    FXDepartment = "cloud"
-    FXProject    = "FXCL"
-  }
+  default = {}
 
-  description = "Tags that will be applied to the resource group and cluster. The default contains the tags that fits with FX's policies."
+  description = "Tags that will be applied on all resources."
 }
 
-###
-# Log analytics
-###
 variable "log_analytics_workspace_name" {
   type        = string
   default     = "fxloganalytics"

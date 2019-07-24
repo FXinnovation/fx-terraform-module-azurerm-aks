@@ -35,8 +35,9 @@ module "aks_cluster" {
   log_analytics_workspace_sku             = "free"
   log_analytics_workspace_retentionDays   = "30"
   cluster_rbac_enabled                    = "true"
+
   cluster_tags = {
-    "inspec" = "true",
+    "inspec" = "true"
     "test"   = "true"
   }
 }

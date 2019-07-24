@@ -37,42 +37,55 @@ resource "azurerm_log_analytics_solution" "this" {
   }
 }
 
-# resource "azurerm_kubernetes_cluster" "this" {
-#   count               = var.enabled == "false" ? 0 : 1
-#   name                = var.cluster_name
-#   location            = azurerm_resource_group.this[0].location
-#   resource_group_name = azurerm_resource_group.this[0].name
-#   kubernetes_version  = var.cluster_kubernetes_version
-#   dns_prefix          = var.cluster_dns_prefix
-#
-#   agent_pool_profile {
-#     name            = var.cluster_agent_pool_name
-#     count           = var.cluster_agent_pool_count
-#     vm_size         = var.cluster_agent_pool_vm_size
-#     os_type         = var.cluster_agent_pool_os_type
-#     os_disk_size_gb = var.cluster_agent_pool_vm_os_disk_gb_size
-#   }
-#
-#   addon_profile {
-#     //oms_agent {
-#     //  enabled                    = true
-#     //  log_analytics_workspace_id = var.log_analytics_workspace_sku == "free" ? azurerm_log_analytics_workspace.this_free[0].id : azurerm_log_analytics_workspace.this_nonfree[0].id
-#     //}
-#   }
-#
-#   service_principal {
-#     client_id     = var.cluster_service_principal_client_id
-#     client_secret = var.cluster_service_principal_client_secret
-#   }
-#
-#   role_based_access_control {
-#     enabled = var.cluster_rbac_enabled
-#   }
-#
-#   tags = merge(
-#     {
-#       "Terraform" = "true"
-#     },
-#     var.cluster_tags,
-#   )
-# }
+module "service_principal" {
+  source = "git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/terraform-module-azuread-service-principal.git?ref=0.1.0"
+
+  enabled = "${var.enabled}"
+
+  application_name = var.name
+}
+
+resource "azurerm_kubernetes_cluster" "this" {
+  count               = var.enabled ? 1 : 0
+
+  name                = var.name
+  location            = azurerm_resource_group.this[0].location
+  resource_group_name = azurerm_resource_group.this[0].name
+  kubernetes_version  = var.kubernetes_version
+  dns_prefix          = var.dns_prefix
+
+  dynamic "agent_pool_profile" {
+    for_each = var.agent_pool_profiles
+
+    content {
+      name            = var.agent_pool_profile.name
+      count           = var.agent_pool_profile.count
+      vm_size         = var.agent_pool_profile.vm_size
+      os_type         = var.agent_pool_profile.os_type
+      os_disk_size_gb = var.agent_pool_profile.os_disk_gb_size
+    {
+  }
+
+  addon_profile {
+    oms_agent {
+      enabled                    = true
+      log_analytics_workspace_id = module.log_analytics_workspace.id
+    }
+  }
+
+  service_principal {
+    client_id     = module.service_principal.client_id
+    client_secret = module.service_prinicpal.client_secret
+  }
+
+  role_based_access_control {
+    enabled = var.rbac_enabled
+  }
+
+  tags = merge(
+    {
+      "Terraform" = "true"
+    },
+    var.tags,
+  )
+}

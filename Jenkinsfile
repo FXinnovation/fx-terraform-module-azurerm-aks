@@ -1,4 +1,3 @@
-@Library('com.fxinnovation.public-common-pipeline-jenkins@feature/slave-size') _
 fxTerraformWithUsernamePassword(
   testEnvironmentCredentialId: 'fxprometheus-service-principal',
   providerUsernameVariableName: 'client_id',

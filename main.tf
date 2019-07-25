@@ -63,7 +63,7 @@ resource "azurerm_kubernetes_cluster" "this" {
       count           = agent_pool_profile.value.count
       vm_size         = agent_pool_profile.value.vm_size
       os_type         = agent_pool_profile.value.os_type
-      os_disk_size_gb = agent_pool_profile.value.os_disk_gb_size
+      os_disk_size_gb = agent_pool_profile.value.os_disk_size_gb
     }
   }
 

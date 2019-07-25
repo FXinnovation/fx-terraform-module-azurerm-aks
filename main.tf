@@ -46,7 +46,7 @@ module "service_principal" {
 }
 
 resource "azurerm_kubernetes_cluster" "this" {
-  count               = var.enabled ? 1 : 0
+  count = var.enabled ? 1 : 0
 
   name                = var.name
   location            = azurerm_resource_group.this[0].location
@@ -58,12 +58,12 @@ resource "azurerm_kubernetes_cluster" "this" {
     for_each = var.agent_pool_profiles
 
     content {
-      name            = var.agent_pool_profile.name
-      count           = var.agent_pool_profile.count
-      vm_size         = var.agent_pool_profile.vm_size
-      os_type         = var.agent_pool_profile.os_type
-      os_disk_size_gb = var.agent_pool_profile.os_disk_gb_size
-    {
+      name            = agent_pool_profile.name
+      count           = agent_pool_profile.count
+      vm_size         = agent_pool_profile.vm_size
+      os_type         = agent_pool_profile.os_type
+      os_disk_size_gb = agent_pool_profile.os_disk_gb_size
+    }
   }
 
   addon_profile {

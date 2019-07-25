@@ -40,7 +40,7 @@ variable "dns_prefix" {
 }
 
 variable "agent_pool_profiles" {
-  type = list
+  type        = list
   description = "List of maps representing an agent pool profile."
 }
 

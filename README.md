@@ -14,6 +14,7 @@ Terraform module that can be used to deploy an Azure Kubernetes Service.
 | log\_analytics\_workspace\_name | Name of the log analytics workspace that will host the cluster telemetric data. | string | `"fxloganalytics"` | no |
 | log\_analytics\_workspace\_retentionDays | Retention days for log analytics workspace. If SKU is free, leave empty, else 30 to 730 days. | string | `"30"` | no |
 | log\_analytics\_workspace\_sku | SKU of the log analytics workspace that will host the cluster telemetric data. | string | `"free"` | no |
+| log\_analytics\_workspace\_tags | Additional tags to add to the log analytics workspace. | map | `{}` | no |
 | name | Name of the AKS cluster to deploy. This will be used also as the DNS prefix. Will also be used for the service principal. | string | `"clustername"` | no |
 | rbac\_enabled | Define if RBAC feature is enabled or not. | bool | `"false"` | no |
 | resource\_group\_name | Name of the resource group that will be created and host with the cluster. | string | `"aks"` | no |

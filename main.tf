@@ -24,7 +24,8 @@ module "log_analytics_workspace" {
 }
 
 resource "azurerm_log_analytics_solution" "this" {
-  count                 = var.enabled ? 1 : 0
+  count = var.enabled ? 1 : 0
+
   solution_name         = "ContainerInsights"
   location              = var.location
   resource_group_name   = module.resource_group.name

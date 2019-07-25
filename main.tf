@@ -56,13 +56,7 @@ resource "azurerm_kubernetes_cluster" "this" {
   dns_prefix          = var.dns_prefix
 
   dynamic "agent_pool_profile" {
-    for_each = [for app in agent_pool_profiles : {
-      name            = app.name
-      count           = app.count
-      vm_size         = app.vm_size
-      os_type         = app.os_type
-      os_disk_size_gb = app.os_disk_size_gb
-    }]
+    for_each = var.agent_pool_profiles
 
     content {
       name            = agent_pool_profile.value.name

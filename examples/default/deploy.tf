@@ -4,16 +4,19 @@ module "aks_cluster" {
   resource_group_name                   = "tftest-aks"
   location                              = "canadacentral"
   name                                  = "tftest-aks"
-  service_principal_client_id           = "${module.aks_service_principal.client_id}"
-  service_principal_client_secret       = "${module.aks_service_principal.client_secret}"
-  agent_pool_name                       = "tftest-aks"
-  agent_pool_count                      = "1"
-  agent_pool_vm_size                    = "Standard_DS2_v2"
-  agent_pool_vm_os_disk_gb_size         = "30"
   log_analytics_workspace_name          = "tftest-aks"
   log_analytics_workspace_sku           = "free"
   log_analytics_workspace_retentionDays = 30
   rbac_enabled                          = true
+  agent_pool_profiles = [
+    {
+      name            = "tftest-aks"
+      count           = 1
+      vm_size         = "Standard_DS2_V2"
+      os_type         = "linux"
+      os_disk_size_gb = 30
+    }
+  ]
 
   tags = {
     "inspec" = "true"

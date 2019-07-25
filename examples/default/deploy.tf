@@ -10,7 +10,7 @@ module "aks_cluster" {
   rbac_enabled                          = true
   agent_pool_profiles = [
     {
-      name            = "tftest-aks"
+      name            = "tftestaks"
       count           = 1
       vm_size         = "Standard_DS2_V2"
       os_type         = "linux"

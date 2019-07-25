@@ -76,7 +76,7 @@ resource "azurerm_kubernetes_cluster" "this" {
 
   service_principal {
     client_id     = module.service_principal.client_id
-    client_secret = module.service_prinicpal.client_secret
+    client_secret = module.service_principal.client_secret
   }
 
   role_based_access_control {

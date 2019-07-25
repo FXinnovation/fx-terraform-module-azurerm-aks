@@ -50,8 +50,8 @@ resource "azurerm_kubernetes_cluster" "this" {
   count = var.enabled ? 1 : 0
 
   name                = var.name
-  location            = azurerm_resource_group.this[0].location
-  resource_group_name = azurerm_resource_group.this[0].name
+  location            = var.location
+  resource_group_name = module.resource_group.name
   kubernetes_version  = var.kubernetes_version
   dns_prefix          = var.dns_prefix
 

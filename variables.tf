@@ -41,7 +41,7 @@ variable "dns_prefix" {
 
 variable "agent_pool_profiles" {
   type        = list
-  description = "List of maps representing an agent pool profile."
+  description = "List of maps representing an agent pool profile.\nExample:\n```\n[\n\n  {\n\n    name            = \"tftest-aks\"\n    count           = 1\n    vm_size         = \"Standard_DS2_V2\"\n    os_type         = \"linux\"\n    os_disk_size_gb = 30\n  }\n]\n```"
 }
 
 variable "rbac_enabled" {

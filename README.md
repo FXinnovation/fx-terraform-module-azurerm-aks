@@ -6,7 +6,7 @@ Terraform module that can be used to deploy an Azure Kubernetes Service.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| agent\_pool\_profiles | List of maps representing an agent pool profile. | list | n/a | yes |
+| agent\_pool\_profiles | List of maps representing an agent pool profile. Example: ``` [<br><br>  {<br><br>    name            = "tftest-aks"     count           = 1     vm_size         = "Standard_DS2_V2"     os_type         = "linux"     os_disk_size_gb = 30   } ] ``` | list | n/a | yes |
 | dns\_prefix | DNS prefix for the inside the kubernetes cluster. | string | `"kubernetes"` | no |
 | enabled | Wheter to enable or not this module | string | `"true"` | no |
 | kubernetes\_version | Version of kubernetes used in the cluster. | string | `"1.13.5"` | no |

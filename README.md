@@ -38,7 +38,7 @@ Example:
     name            = "tftest-aks"
     count           = 1
     vm_size         = "Standard_DS2_V2"
-    os_type         = "linux"
+    os_type         = "Linux"
     os_disk_size_gb = 30
   }
 ]

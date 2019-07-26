@@ -21,13 +21,6 @@ Terraform module that can be used to deploy an Azure Kubernetes Service.
 | resource\_group\_tags | Tags you want to apply to the resource group. | map | `{}` | no |
 | tags | Tags that will be applied on all resources. | map(string) | `{}` | no |
 
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| host |  |
-| kube\_config |  |
-
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## agent-pool-profiles

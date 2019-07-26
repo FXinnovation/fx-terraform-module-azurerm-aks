@@ -46,47 +46,47 @@ module "service_principal" {
   application_name = var.name
 }
 
-resource "azurerm_kubernetes_cluster" "this" {
-  count = var.enabled ? 1 : 0
-
-  name                = var.name
-  location            = var.location
-  resource_group_name = module.resource_group.name
-  kubernetes_version  = var.kubernetes_version
-  dns_prefix          = var.dns_prefix
-
-  dynamic "agent_pool_profile" {
-    for_each = var.agent_pool_profiles
-
-    content {
-      name            = agent_pool_profile.value.name
-      count           = agent_pool_profile.value.count
-      vm_size         = agent_pool_profile.value.vm_size
-      os_type         = agent_pool_profile.value.os_type
-      os_disk_size_gb = agent_pool_profile.value.os_disk_size_gb
-    }
-  }
-
-  addon_profile {
-    oms_agent {
-      enabled                    = true
-      log_analytics_workspace_id = module.log_analytics_workspace.id
-    }
-  }
-
-  service_principal {
-    client_id     = module.service_principal.client_id
-    client_secret = module.service_principal.client_secret
-  }
-
-  role_based_access_control {
-    enabled = var.rbac_enabled
-  }
-
-  tags = merge(
-    {
-      "Terraform" = "true"
-    },
-    var.tags,
-  )
-}
+# resource "azurerm_kubernetes_cluster" "this" {
+#   count = var.enabled ? 1 : 0
+#
+#   name                = var.name
+#   location            = var.location
+#   resource_group_name = module.resource_group.name
+#   kubernetes_version  = var.kubernetes_version
+#   dns_prefix          = var.dns_prefix
+#
+#   dynamic "agent_pool_profile" {
+#     for_each = var.agent_pool_profiles
+#
+#     content {
+#       name            = agent_pool_profile.value.name
+#       count           = agent_pool_profile.value.count
+#       vm_size         = agent_pool_profile.value.vm_size
+#       os_type         = agent_pool_profile.value.os_type
+#       os_disk_size_gb = agent_pool_profile.value.os_disk_size_gb
+#     }
+#   }
+#
+#   addon_profile {
+#     oms_agent {
+#       enabled                    = true
+#       log_analytics_workspace_id = module.log_analytics_workspace.id
+#     }
+#   }
+#
+#   service_principal {
+#     client_id     = module.service_principal.client_id
+#     client_secret = module.service_principal.client_secret
+#   }
+#
+#   role_based_access_control {
+#     enabled = var.rbac_enabled
+#   }
+#
+#   tags = merge(
+#     {
+#       "Terraform" = "true"
+#     },
+#     var.tags,
+#   )
+# }

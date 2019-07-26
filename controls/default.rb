@@ -21,6 +21,7 @@ dns_prefix          = attribute('dns_prefix')
 ###
 include_controls 'azurerm-resource-group'
 include_controls 'azurerm-log-analytics-workspace'
+include_controls 'azuread-service-principal'
 
 ###
 # Controls

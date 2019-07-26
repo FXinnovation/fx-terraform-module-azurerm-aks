@@ -1,6 +1,8 @@
 # terraform-module-azure-aks
 Terraform module that can be used to deploy an Azure Kubernetes Service.
 
+**NOTE: This module uses both azuread and azurerm providers. They should be set accordingly.**
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
@@ -20,6 +22,15 @@ Terraform module that can be used to deploy an Azure Kubernetes Service.
 | resource\_group\_name | Name of the resource group that will be created and host with the cluster. | string | `"aks"` | no |
 | resource\_group\_tags | Tags you want to apply to the resource group. | map | `{}` | no |
 | tags | Tags that will be applied on all resources. | map(string) | `{}` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| log\_analytics\_workspace\_id |  |
+| log\_analytics\_workspace\_primary\_shared\_key |  |
+| log\_analytics\_workspace\_secondary\_shared\_key |  |
+| log\_analytics\_workspace\_workspace\_id |  |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

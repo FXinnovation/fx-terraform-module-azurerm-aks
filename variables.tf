@@ -1,6 +1,6 @@
 variable "enabled" {
-  type        = string
-  default     = "true"
+  type        = bool
+  default     = true
   description = "Wheter to enable or not this module"
 }
 

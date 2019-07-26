@@ -40,3 +40,21 @@ attributes:
     value: true
     profile: azurerm-log-analytics-workspace
   # AKS Attributes
+  - name: location
+    value: CHANGE_ME
+    profile: azurerm-aks
+  - name: resource_group_name
+    value: CHANGE_ME
+    profile: azurerm-aks
+  - name: enabled
+    value: true
+    profile: azurerm-aks
+  - name: name
+    value: CHANGE_ME
+    profile: azurerm-aks
+  - name: kubernetes_version
+    value: CHANGE_ME
+    profile: azurerm-aks
+  - name: dns_prefix
+    value: CHANGE_ME
+    profile: azurerm-aks

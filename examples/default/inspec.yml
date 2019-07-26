@@ -10,4 +10,51 @@ depends:
   - name: azurerm-aks
     path: ../../
   - name: azuread-service-principal
-    path: 'https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azuread-service-principal/archive/SL-455.tar.gz'
+    path: 'https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azuread-service-principal/archive/0.1.0.tar.gz'
+  - name: azurerm-log-analytics-workspace
+    path: 'https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azurerm-log-analytics-workspace/archive/0.1.0.tar.gz'
+  - name: azurerm-resource-group
+    path: 'https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azurerm-resource-group/archive/0.1.0.tar.gz'
+attributes:
+  # Resource Group Attributes
+  - name: name_prefix
+    value: tftest-aks
+    profile: azurerm-resource-group
+  - name: location
+    value: canadacentral
+    profile: azurerm-resource-group
+  - name: enabled
+    value: true
+    profile: azurerm-resource-group
+  # Log Analytics Workspace Attributes
+  - name: name
+    value: tftest-aks
+    profile: azurerm-log-analytics-workspace
+  - name: location
+    value: canadacentral
+    profile: azurerm-log-analytics-workspace
+  - name: resource_group_name
+    value: tftest-aks
+    profile: azurerm-log-analytics-workspace
+  - name: enabled
+    value: true
+    profile: azurerm-log-analytics-workspace
+  # AKS Attributes
+  - name: location
+    value: canadacentral
+    profile: azurerm-aks
+  - name: resource_group_name
+    value: tftest-aks
+    profile: azurerm-aks
+  - name: enabled
+    value: true
+    profile: azurerm-aks
+  - name: name
+    value: tftest-aks
+    profile: azurerm-aks
+  - name: kubernetes_version
+    value: 1.13.5
+    profile: azurerm-aks
+  - name: dns_prefix
+    value: kubernetes
+    profile: azurerm-aks

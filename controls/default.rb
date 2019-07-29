@@ -93,10 +93,10 @@ control 'azure-kubernetes-service' do
     its('properties.dnsPrefix')         { should cmp dns_prefix }
     its('location')                     { should cmp location }
     its('tags')                         { should include 'Terraform' }
-    its('Terraform_tag')                { should cmp "true" }
+    its('tags.Terraform')               { should cmp "true" }
   end if enabled
 
   describe azurerm_aks_cluster(resource_group: resource_group_name, name: name) do
-    it                                  { should_not exist }
+    it { should_not exist }
   end unless enabled
 end

@@ -9,31 +9,7 @@ version: 0.1.0
 depends:
   - name: azurerm-aks
     path: ../../
-attributes:
-  # Resource Group Attributes
-  - name: name_prefix
-    value: tftest-aks
-    profile: azurerm-resource-group
-  - name: location
-    value: canadacentral
-    profile: azurerm-resource-group
-  - name: enabled
-    value: true
-    profile: azurerm-resource-group
-  # Log Analytics Workspace Attributes
-  - name: name
-    value: tftest-aks
-    profile: azurerm-log-analytics-workspace
-  - name: location
-    value: canadacentral
-    profile: azurerm-log-analytics-workspace
-  - name: resource_group_name
-    value: tftest-aks
-    profile: azurerm-log-analytics-workspace
-  - name: enabled
-    value: true
-    profile: azurerm-log-analytics-workspace
-  # AKS Attributes
+inputs:
   - name: location
     value: canadacentral
     profile: azurerm-aks
@@ -51,4 +27,7 @@ attributes:
     profile: azurerm-aks
   - name: dns_prefix
     value: kubernetes
+    profile: azurerm-aks
+  - name: log_analytics_workspace_name
+    value: tftest-aks
     profile: azurerm-aks

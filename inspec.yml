@@ -17,46 +17,32 @@ depends:
     url: https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azuread-service-principal/archive/1.0.5.tar.gz
 supports:
   - platform: azure
-attributes:
-  # Resource Group Attributes
-  - name: name_prefix
-    value: CHANGE_ME
-    profile: azurerm-resource-group
+inputs:
   - name: location
-    value: CHANGE_ME
-    profile: azurerm-resource-group
-  - name: enabled
-    value: true
-    profile: azurerm-resource-group
-  # Log Analytics Workspace Attributes
-  - name: name
-    value: CHANGE_ME
-    profile: azurerm-log-analytics-workspace
-  - name: location
-    value: CHANGE_ME
-    profile: azurerm-log-analytics-workspace
-  - name: resource_group_name
-    value: CHANGE_ME
-    profile: azurerm-log-analytics-workspace
-  - name: enabled
-    value: true
-    profile: azurerm-log-analytics-workspace
-  # AKS Attributes
-  - name: location
-    value: CHANGE_ME
+    description: Location in which the resources are deployed.
+    required: true
     profile: azurerm-aks
   - name: resource_group_name
-    value: CHANGE_ME
+    description: Resource group in which the resources are deployed.
+    required: true
     profile: azurerm-aks
   - name: enabled
+    description: Whether the terraform module is enabled or not.
     value: true
     profile: azurerm-aks
   - name: name
-    value: CHANGE_ME
+    description: Name of the AKS Cluster.
+    required: true
     profile: azurerm-aks
   - name: kubernetes_version
-    value: CHANGE_ME
+    description: Kubernetes version of the AKS Cluster.
+    required: true
     profile: azurerm-aks
   - name: dns_prefix
-    value: CHANGE_ME
+    description: DNS prefix of the AKS Cluster.
+    required: true
+    profile: azurerm-aks
+  - name: log_analytics_workspace_name
+    description: Name of the log analytics workspace linked to the AKS Cluster.
+    required: true
     profile: azurerm-aks

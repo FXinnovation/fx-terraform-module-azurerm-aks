@@ -7,20 +7,74 @@
 #
 
 ###
-# Attributes handling
+# Inputs handling
 ###
-enabled             = attribute('enabled')
-location            = attribute('location')
-resource_group_name = attribute('resource_group_name')
-name                = attribute('name')
-kubernetes_version  = attribute('kubernetes_version')
-dns_prefix          = attribute('dns_prefix')
+enabled                      = input('enabled')
+location                     = input('location')
+resource_group_name          = input('resource_group_name')
+name                         = input('name')
+kubernetes_version           = input('kubernetes_version')
+dns_prefix                   = input('dns_prefix')
+log_analytics_workspace_name = input('log_analytics_workspace_name')
+
 
 ###
-# Calling Dependencies Controls
+# Resource Group Profile
 ###
+input(
+  'name_prefix',
+  value: resource_group_name,
+  profile: 'azurerm-resource-group',
+  priority: 100
+)
+input(
+  'location',
+  value: location,
+  profile: 'azurerm-resource-group',
+  priority: 100
+)
+input(
+  'enabled',
+  value: enabled,
+  profile: 'azurerm-resource-group',
+  priority: 100
+)
+
 include_controls 'azurerm-resource-group'
+
+###
+# Log Analytics Workspace Profile
+###
+input(
+  'name',
+  value: log_analytics_workspace_name,
+  profile: 'azurerm-log-analytics-workspace',
+  priority: 100
+)
+input(
+  'resource_group_name',
+  value: resource_group_name,
+  profile: 'azurerm-log-analytics-workspace',
+  priority: 100
+)
+input(
+  'location',
+  value: location,
+  profile: 'azurerm-log-analytics-workspace',
+  priority: 100
+)
+input(
+  'enabled',
+  value: enabled,
+  profile: 'azurerm-log-analytics-workspace',
+  priority: 100
+)
+
 include_controls 'azurerm-log-analytics-workspace'
+
+###
+# Service Principal Profile
+###
 include_controls 'azuread-service-principal'
 
 ###

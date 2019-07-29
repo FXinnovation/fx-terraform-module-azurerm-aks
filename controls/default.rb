@@ -15,7 +15,8 @@ resource_group_name          = input('resource_group_name')
 name                         = input('name')
 kubernetes_version           = input('kubernetes_version')
 dns_prefix                   = input('dns_prefix')
-log_analytics_workspace_name = input('log_analytics_workspace_name')
+# https://github.com/inspec/inspec/issues/4338
+# log_analytics_workspace_name = input('log_analytics_workspace_name')
 
 
 ###

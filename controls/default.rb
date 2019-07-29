@@ -21,54 +21,56 @@ log_analytics_workspace_name = input('log_analytics_workspace_name')
 ###
 # Resource Group Profile
 ###
-input(
-  'name_prefix',
-  value: resource_group_name,
-  profile: 'azurerm-resource-group',
-  priority: 100
-)
-input(
-  'location',
-  value: location,
-  profile: 'azurerm-resource-group',
-  priority: 100
-)
-input(
-  'enabled',
-  value: enabled,
-  profile: 'azurerm-resource-group',
-  priority: 100
-)
-
+# Pending result of https://github.com/inspec/inspec/issues/4338
+# input(
+#   'name_prefix',
+#   value: resource_group_name,
+#   profile: 'azurerm-resource-group',
+#   priority: 100
+# )
+# input(
+#   'location',
+#   value: location,
+#   profile: 'azurerm-resource-group',
+#   priority: 100
+# )
+# input(
+#   'enabled',
+#   value: enabled,
+#   profile: 'azurerm-resource-group',
+#   priority: 100
+# )
+#
 include_controls 'azurerm-resource-group'
 
 ###
 # Log Analytics Workspace Profile
 ###
-input(
-  'name',
-  value: log_analytics_workspace_name,
-  profile: 'azurerm-log-analytics-workspace',
-  priority: 100
-)
-input(
-  'resource_group_name',
-  value: resource_group_name,
-  profile: 'azurerm-log-analytics-workspace',
-  priority: 100
-)
-input(
-  'location',
-  value: location,
-  profile: 'azurerm-log-analytics-workspace',
-  priority: 100
-)
-input(
-  'enabled',
-  value: enabled,
-  profile: 'azurerm-log-analytics-workspace',
-  priority: 100
-)
+# Pending result of https://github.com/inspec/inspec/issues/4338
+# input(
+#   'name',
+#   value: log_analytics_workspace_name,
+#   profile: 'azurerm-log-analytics-workspace',
+#   priority: 100
+# )
+# input(
+#   'resource_group_name',
+#   value: resource_group_name,
+#   profile: 'azurerm-log-analytics-workspace',
+#   priority: 100
+# )
+# input(
+#   'location',
+#   value: location,
+#   profile: 'azurerm-log-analytics-workspace',
+#   priority: 100
+# )
+# input(
+#   'enabled',
+#   value: enabled,
+#   profile: 'azurerm-log-analytics-workspace',
+#   priority: 100
+# )
 
 include_controls 'azurerm-log-analytics-workspace'
 

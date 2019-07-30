@@ -16,6 +16,14 @@ output "log_analytics_workspace_workspace_id" {
   value = module.log_analytics_workspace.workspace_id
 }
 
+output "resource_group_id" {
+  value = module.resource_group.id
+}
+
+output "resource_group_name" {
+  value = module.resource_group.name
+}
+
 output "id" {
   value = element(concat(azurerm_kubernetes_cluster.this.*.id, [""]), 0)
 }

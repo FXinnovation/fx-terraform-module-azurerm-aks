@@ -35,6 +35,8 @@ Terraform module that can be used to deploy an Azure Kubernetes Service.
 | log\_analytics\_workspace\_primary\_shared\_key |  |
 | log\_analytics\_workspace\_secondary\_shared\_key |  |
 | log\_analytics\_workspace\_workspace\_id |  |
+| resource\_group\_id |  |
+| resource\_group\_name |  |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

@@ -27,6 +27,10 @@ Terraform module that can be used to deploy an Azure Kubernetes Service.
 
 | Name | Description |
 |------|-------------|
+| fqdn |  |
+| id |  |
+| kube\_admin\_config |  |
+| kube\_config |  |
 | log\_analytics\_workspace\_id |  |
 | log\_analytics\_workspace\_primary\_shared\_key |  |
 | log\_analytics\_workspace\_secondary\_shared\_key |  |

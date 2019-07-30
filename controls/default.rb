@@ -89,7 +89,10 @@ control 'azure-kubernetes-service' do
   tag    'azurerm'
   tag    'aks'
 
-  describe azurerm_aks_cluster(resource_group: resource_group_name, name: name) do
+  describe azurerm_aks_cluster(
+    resource_group: resource_group_name,
+    name: name
+  ) do
     it                                  { should exist }
     its('properties.provisioningState') { should cmp 'Succeeded' }
     its('properties.kubernetesVersion') { should cmp kubernetes_version }

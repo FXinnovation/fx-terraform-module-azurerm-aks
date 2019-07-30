@@ -1,10 +1,10 @@
-name: azurerm-aks-default
-title: AzureRM AKS for default example
+name: azurerm-aks-disabled
+title: AzureRM AKS for disabled example
 maintainer: FXinnovation, Inc.
 copyright: FXinnovaion, Inc.
 copyright_email: cloudsquad@fxinnovation.com
 license: MIT
-summary: Inspec for azurerm-aks default example
+summary: Inspec for azurerm-aks disabled example
 version: 0.1.0
 depends:
   - name: azurerm-aks
@@ -18,7 +18,7 @@ inputs:
     value: tftest-aks
     profile: azurerm-aks
   - name: enabled
-    value: true
+    value: false
     profile: azurerm-aks
   - name: name
     value: tftest-aks
@@ -40,12 +40,12 @@ inputs:
     value: tftest-aks
     profile: azurerm-log-analytics-workspace
   - name: enabled
-    value: true
+    value: false
     profile: azurerm-log-analytics-workspace
   # resource group
   - name: enabled
     profile: azurerm-resource-group
-    value: true
+    value: false
   - name: name
     value: tftest-aks
     profile: azurerm-resource-group

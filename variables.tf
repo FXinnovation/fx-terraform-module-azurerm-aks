@@ -1,7 +1,7 @@
 variable "enabled" {
   type        = bool
   default     = true
-  description = "Wheter to enable or not this module"
+  description = "Whether to enable or not this module"
 }
 
 variable "location" {

@@ -10,7 +10,7 @@ Terraform module that can be used to deploy an Azure Kubernetes Service.
 |------|-------------|:----:|:-----:|:-----:|
 | agent\_pool\_profiles | List of maps representing an agent pool profile. | list | n/a | yes |
 | dns\_prefix | DNS prefix for the inside the kubernetes cluster. | string | `"kubernetes"` | no |
-| enabled | Wheter to enable or not this module | bool | `"true"` | no |
+| enabled | Whether to enable or not this module | bool | `"true"` | no |
 | kubernetes\_version | Version of kubernetes used in the cluster. | string | `"1.13.5"` | no |
 | location | Location where the resource group and cluster will be deployed. | string | `"canadacentral"` | no |
 | log\_analytics\_workspace\_name | Name of the log analytics workspace that will host the cluster telemetric data. | string | `"fxloganalytics"` | no |

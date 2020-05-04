@@ -1,5 +1,6 @@
 provider "azurerm" {
-  version         = "~> 1.28.0"
+  features {}
+  version         = ">= 2.0.0"
   client_id       = "${var.client_id}"
   client_secret   = "${var.client_secret}"
   subscription_id = "${var.subscription_id}"
@@ -7,7 +8,7 @@ provider "azurerm" {
 }
 
 provider "azuread" {
-  version         = "~> 0.4.0"
+  version         = ">= 0.7.0"
   client_id       = "${var.client_id}"
   client_secret   = "${var.client_secret}"
   subscription_id = "${var.subscription_id}"

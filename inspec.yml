@@ -10,11 +10,9 @@ depends:
   - name: inspec-azure
     url: https://github.com/inspec/inspec-azure/archive/v1.3.0.tar.gz
   - name: azurerm-resource-group
-    url: https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azurerm-resource-group/archive/0.2.0.tar.gz
-  - name: azurerm-log-analytics-workspace
-    url: https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azurerm-log-analytics-workspace/archive/0.2.0.tar.gz
+    url: https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azurerm-resource-group/archive/1.0.0.tar.gz
   - name: azuread-service-principal
-    url: https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azuread-service-principal/archive/1.0.5.tar.gz
+    url: https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azuread-service-principal/archive/1.0.6.tar.gz
 supports:
   - platform: azure
 inputs:
@@ -43,23 +41,6 @@ inputs:
     description: DNS prefix of the AKS Cluster.
     required: true
     profile: azurerm-aks
-  # log analytics-workspace
-  - name: name
-    description: Name of the log analytics workspace linked to the AKS Cluster.
-    required: true
-    profile: azurerm-log-analytics-workspace
-  - name: location
-    description: Location in which the resources are deployed.
-    required: true
-    profile: azurerm-log-analytics-workspace
-  - name: resource_group_name
-    description: Resource group in which the resources are deployed.
-    required: true
-    profile: azurerm-log-analytics-workspace
-  - name: enabled
-    description: Whether the terraform module is enabled or not.
-    required: true
-    profile: azurerm-log-analytics-workspace
   # resource group
   - name: enabled
     description: Whether the terraform module is enabled or not.

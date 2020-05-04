@@ -29,19 +29,6 @@ inputs:
   - name: dns_prefix
     value: kubernetes
     profile: azurerm-aks
-  # log analytics-workspace
-  - name: name
-    value: tftest-aks
-    profile: azurerm-log-analytics-workspace
-  - name: location
-    value: canadacentral
-    profile: azurerm-log-analytics-workspace
-  - name: resource_group_name
-    value: tftest-aks
-    profile: azurerm-log-analytics-workspace
-  - name: enabled
-    value: true
-    profile: azurerm-log-analytics-workspace
   # resource group
   - name: enabled
     profile: azurerm-resource-group

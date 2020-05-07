@@ -55,15 +55,26 @@ resource "azurerm_kubernetes_cluster" "this" {
   kubernetes_version  = var.kubernetes_version
   dns_prefix          = var.dns_prefix
 
-  dynamic "agent_pool_profile" {
-    for_each = var.agent_pool_profiles
+  dynamic "default_node_pool" {
+    for_each = var.default_node_pool
 
     content {
-      name            = agent_pool_profile.value.name
-      count           = agent_pool_profile.value.count
-      vm_size         = agent_pool_profile.value.vm_size
-      os_type         = agent_pool_profile.value.os_type
-      os_disk_size_gb = agent_pool_profile.value.os_disk_size_gb
+      name            = default_node_pool.value.name
+      vm_size         = default_node_pool.value.vm_size
+      type            = default_node_pool.value.type
+      node_count      = default_node_pool.value.node_count
+      max_pods        = default_node_pool.value.max_pods
+      os_disk_size_gb = default_node_pool.value.os_disk_size_gb
+    }
+  }
+
+  dynamic "linux_profile" {
+    for_each = var.admin_username != "" ? [1] : []
+    content {
+      admin_username = var.admin_username
+      ssh_key {
+        key_data = var.ssh_key_key_data
+      }
     }
   }
 

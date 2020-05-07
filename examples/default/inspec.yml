@@ -5,7 +5,7 @@ copyright: FXinnovaion, Inc.
 copyright_email: cloudsquad@fxinnovation.com
 license: MIT
 summary: Inspec for azurerm-aks default example
-version: 0.1.0
+version: 0.5.0
 depends:
   - name: azurerm-aks
     path: ../../

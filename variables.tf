@@ -39,9 +39,21 @@ variable "dns_prefix" {
   description = "DNS prefix for the inside the kubernetes cluster."
 }
 
-variable "agent_pool_profiles" {
+variable "default_node_pool" {
   type        = list
   description = "List of maps representing an agent pool profile."
+}
+
+variable "admin_username" {
+  description = "The admin username for the cluster. Changing this forces a new resource to be created."
+  type        = string
+  default     = "testadmin"
+}
+
+variable "ssh_key_key_data" {
+  description = "The public SSH key used to access the cluster. Changing this forces a new resource to be created."
+  type        = string
+  default     = null
 }
 
 variable "rbac_enabled" {
@@ -51,10 +63,8 @@ variable "rbac_enabled" {
 }
 
 variable "tags" {
-  type = map(string)
-
-  default = {}
-
+  type        = map(string)
+  default     = {}
   description = "Tags that will be applied on all resources."
 }
 

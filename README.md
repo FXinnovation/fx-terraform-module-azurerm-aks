@@ -21,7 +21,8 @@ Terraform module that can be used to deploy an Azure Kubernetes Service.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| agent\_pool\_profiles | List of maps representing an agent pool profile. | `list` | n/a | yes |
+| admin\_username | The admin username for the cluster. Changing this forces a new resource to be created. | `string` | `"testadmin"` | no |
+| default\_node\_pool | List of maps representing an agent pool profile. | `list` | n/a | yes |
 | dns\_prefix | DNS prefix for the inside the kubernetes cluster. | `string` | `"kubernetes"` | no |
 | enabled | Whether to enable or not this module | `bool` | `true` | no |
 | kubernetes\_version | Version of kubernetes used in the cluster. | `string` | `"1.13.5"` | no |
@@ -34,6 +35,7 @@ Terraform module that can be used to deploy an Azure Kubernetes Service.
 | rbac\_enabled | Define if RBAC feature is enabled or not. | `bool` | `false` | no |
 | resource\_group\_name | Name of the resource group that will be created and host with the cluster. | `string` | `"aks"` | no |
 | resource\_group\_tags | Tags you want to apply to the resource group. | `map` | `{}` | no |
+| ssh\_key\_key\_data | The public SSH key used to access the cluster. Changing this forces a new resource to be created. | `string` | `null` | no |
 | tags | Tags that will be applied on all resources. | `map(string)` | `{}` | no |
 
 ## Outputs

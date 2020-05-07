@@ -5,10 +5,10 @@ copyright: FXinnovaion, Inc.
 copyright_email: cloudsquad@fxinnovation.com
 license: MIT
 summary: Inspec for azurerm aks terraform module
-version: 0.1.0
+version: 0.5.0
 depends:
   - name: inspec-azure
-    url: https://github.com/inspec/inspec-azure/archive/v1.3.0.tar.gz
+    url: https://github.com/inspec/inspec-azure/archive/v1.10.0.tar.gz
   - name: azurerm-resource-group
     url: https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azurerm-resource-group/archive/1.0.0.tar.gz
   - name: azuread-service-principal

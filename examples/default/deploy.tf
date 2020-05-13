@@ -18,7 +18,6 @@ module "aks_cluster" {
       type            = "AvailabilitySet"
       node_count      = 1
       vm_size         = "Standard_D2_v2"
-      max_pods        = 2
       os_disk_size_gb = 30
     }
   ]

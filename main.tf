@@ -63,7 +63,6 @@ resource "azurerm_kubernetes_cluster" "this" {
       vm_size         = default_node_pool.value.vm_size
       type            = default_node_pool.value.type
       node_count      = default_node_pool.value.node_count
-      max_pods        = default_node_pool.value.max_pods
       os_disk_size_gb = default_node_pool.value.os_disk_size_gb
     }
   }

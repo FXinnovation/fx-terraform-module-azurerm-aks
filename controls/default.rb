@@ -73,7 +73,7 @@ include_controls 'azurerm-resource-group'
 #   priority: 100
 # )
 
-include_controls 'azurerm-log-analytics-workspace'
+# include_controls 'azurerm-log-analytics-workspace'
 
 ###
 # Service Principal Profile

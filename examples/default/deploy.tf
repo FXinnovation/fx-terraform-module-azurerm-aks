@@ -15,7 +15,7 @@ module "aks_cluster" {
   default_node_pool = [
     {
       name            = "tftestaks"
-      type            = "VirtualMachineScaleSets"
+      type            = "AvailabilitySet"
       node_count      = 1
       vm_size         = "Standard_D2_v2"
       max_pods        = 2

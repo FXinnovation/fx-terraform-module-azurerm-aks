@@ -29,7 +29,7 @@ variable "name" {
 
 variable "kubernetes_version" {
   type        = string
-  default     = "1.13.5"
+  default     = "1.16.7"
   description = "Version of kubernetes used in the cluster."
 }
 

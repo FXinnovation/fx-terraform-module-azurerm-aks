@@ -24,7 +24,7 @@ inputs:
     value: tftest-aks
     profile: azurerm-aks
   - name: kubernetes_version
-    value: 1.13.5
+    value: 1.16.7
     profile: azurerm-aks
   - name: dns_prefix
     value: kubernetes

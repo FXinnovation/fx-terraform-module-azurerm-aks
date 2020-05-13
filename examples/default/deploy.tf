@@ -6,7 +6,7 @@ module "aks_cluster" {
   resource_group_name                   = "tftest-aks"
   location                              = "canadacentral"
   name                                  = "tftest-aks"
-  kubernetes_version                    = "1.13.5"
+  kubernetes_version                    = "1.16.7"
   dns_prefix                            = "kubernetes"
   log_analytics_workspace_name          = "tftest-aks"
   log_analytics_workspace_sku           = "free"

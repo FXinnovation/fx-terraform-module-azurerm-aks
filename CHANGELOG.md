@@ -6,9 +6,9 @@
 0.2.0 / 2020-01-15
 ==================
 
-  * doc: removes all unusuful commit in CHANGELOG
-  * tech: bumps pre-commit tools versions
-  * doc: adds CHANGELOG
+  * doc: remove all unuseful commit in CHANGELOG
+  * tech: bump pre-commit tools versions
+  * doc: add CHANGELOG
   * feat: updates Jenkinsfile to use latest pipeline
   * Change Jenkinsfile to use latest image for terraform from FX
 

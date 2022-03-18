@@ -1,5 +1,5 @@
 module "resource_group" {
-  source = "git::https://git@scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azurerm-resource-group.git?ref=0.1.0"
+  source = "git::https://git@github.com/FXinnovation/fx-terraform-module-azurerm-resource-group.git?ref=0.1.0"
 
   enabled  = var.enabled
   name     = var.resource_group_name
@@ -11,7 +11,7 @@ module "resource_group" {
 }
 
 module "log_analytics_workspace" {
-  source = "git::https://git@scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azurerm-log-analytics-workspace.git?ref=0.1.0"
+  source = "git::https://git@github.com/FXinnovation/fx-terraform-module-azurerm-log-analytics-workspace.git?ref=0.1.0"
 
   enabled             = var.enabled
   name                = var.log_analytics_workspace_name
@@ -39,7 +39,7 @@ resource "azurerm_log_analytics_solution" "this" {
 }
 
 module "service_principal" {
-  source = "git::https://git@scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azuread-service-principal.git?ref=1.0.5"
+  source = "git::https://git@github.com/FXinnovation/fx-terraform-module-azuread-service-principal.git?ref=1.0.5"
 
   enabled = var.enabled
 

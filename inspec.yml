@@ -10,9 +10,9 @@ depends:
   - name: inspec-azure
     url: https://github.com/inspec/inspec-azure/archive/v1.10.0.tar.gz
   - name: azurerm-resource-group
-    url: https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azurerm-resource-group/archive/1.0.0.tar.gz
+    url: https://github.com/FXinnovation/fx-terraform-module-azurerm-resource-group/archive/1.0.0.tar.gz
   - name: azuread-service-principal
-    url: https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-azuread-service-principal/archive/1.0.6.tar.gz
+    url: https://github.com/FXinnovation/fx-terraform-module-azuread-service-principal/archive/1.0.6.tar.gz
 supports:
   - platform: azure
 inputs:
